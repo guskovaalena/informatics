@@ -1,0 +1,25 @@
+def win1(x, s):
+    if (x + s < 79) and ((x + 1 + s) >= 79 or (x + s + x) >= 79 or (s + s + x) >= 79):
+        return True
+    return False
+
+def loss1 (x, s):
+    if (not(win1(x, s)) and win1(x+1, s) and win1(x, s+x) and win1(x+s, s) and win1(x, s+1)):
+        return True
+    return False
+
+def win2(x, s):
+    if loss1(x+1, s) or loss1(x, s+1) or loss1(x, s + x) or loss1(x + s, s):
+        return True
+    return False
+
+def loss12(x, s):
+    if (win1(x+1, s) or win2(x+1, s)) and (win1(x + s, s) or win2(x + s, s)) and (win1(x, s+1) or win2(x, s+1)) and (win1(x, s + x) or win2(x, s + x)) and (win1(x+1, s) or win1(x + s, s) or win1(x, s+1) or win1(x, s + x)) and (win2(x+1, s) or win2(x + s, s) or win2(x, s+1) or win2(x, s + x)):
+        return True
+    return False
+
+x = 9
+for s in range(1, 70):
+    #if win1(x, s+1) or win1(x+1, s) or win1(x + s, s) or win1(x, s + x):
+    if loss12(x, s):
+        print(s)
