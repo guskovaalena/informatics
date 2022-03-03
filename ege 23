@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+
+int f(int start, int finish){
+    if(start>finish) return 0;
+    if(start==finish) return 1;
+    if(start == 16) return 0;
+    return f(start*2,finish) + f(start*3,finish);
+    }
+
+int main() {
+
+    cout << f(8,96)*f(96,3456);
+
+return 0;
+}
