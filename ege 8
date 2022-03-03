@@ -1,0 +1,29 @@
+#include <iostream>
+#include <set>
+#include <algorithm>
+#include <cstring>
+using namespace std;
+
+int main () {
+
+    string st = "APORT";
+    string st1 = "AO";
+
+    set <string> words;
+
+    for (char p1: st)
+        for (char p2: st1)
+            for (char p3: st)
+                for (char p4: st1)
+                    for (char p5: st){
+                            string s = "";
+                            s = s + p1 + p2 + p3 + p4 + p5;
+                            if (count (s.begin (), s.end(), 'A') == 1){
+                                words.insert (s);
+                            }
+                        }
+
+cout<<words.size ();
+
+return 0;
+}
