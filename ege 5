@@ -1,0 +1,36 @@
+def tobase(n, b):
+    nums = []
+
+    while n > 0:
+        nums.insert(0, n % b)
+        n //= b
+
+    return nums
+
+def rev_base(table: list, base):
+    res = 0
+
+    for k in reversed(range(0, len(table))):
+        res += table[::-1][k] * (base ** k)
+
+    return res
+
+for i in range(60, 1000):
+    binary = tobase(i, 2)
+
+    for j in range(3):
+        a = binary.count(1)
+        b = binary.count(0)
+
+        if a == b:
+            binary.append(binary[-1])
+        if a > b:
+            binary.append(0)
+        else:
+            binary.append(1)
+
+    res = rev_base(binary, 10)
+
+    if res % 4 == 0:
+        print(i)
+        
