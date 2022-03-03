@@ -1,0 +1,24 @@
+#include <iostream>
+#include <set>
+using namespace std;
+
+int main () {
+
+    set <int> Mn;
+    set <int> Mr;
+
+    Mn.insert(10);
+
+    for (int i = 0; i < 5; i++){
+        for (int x: Mn){
+            Mr.insert (x+2);
+            Mr.insert (x+3);
+            Mr.insert (x*2);
+        }
+        Mn = Mr;
+        Mr.clear();
+    }
+    cout<<Mn.size();
+
+    return 0;
+}
