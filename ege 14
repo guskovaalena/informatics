@@ -1,0 +1,8 @@
+def tobase(n, b):
+    nums = []
+    while n:
+        nums.append(int (n % b))
+        n //= b
+    return nums[::-1]
+
+print(tobase(9 ** 14 + 3 ** 18 - 9 ** 5 - 27, 3).count(0))
