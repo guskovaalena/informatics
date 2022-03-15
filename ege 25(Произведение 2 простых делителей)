@@ -1,0 +1,48 @@
+#include <iostream> 
+#include <cmath> 
+using namespace std; 
+
+int main () { 
+
+    int i, j, k, a, n, m, count = 0,max = 0; 
+    int b; 
+    long long sum = 0; 
+    bool f1, f2; 
+
+    for(i = 238941; i <= 315675; i++) { 
+        for(j = 2; j*j < i; j++) { 
+            f1 = true; 
+            f2 = true; 
+            if(i % j == 0){ 
+                for(n = 2; n*n <= j; n++){ 
+                    if(j%n == 0){ 
+                        f1 = false; 
+                        break; 
+                    } 
+                } 
+                a = i / j; 
+                for(n = 2; n*n <= a; n++){ 
+                    if(a % n == 0) { 
+                        f2 = false; 
+                        break; 
+                    } 
+                } 
+                if(f1 && f2){ 
+                    count++; 
+                    if(abs(j-a) > max){ 
+                        max = abs(j-a); 
+                        b = i; 
+                    } 
+                    continue; 
+                } 
+
+            } 
+        } 
+
+    } 
+
+    cout<<endl;
+    cout<<count<<' '<<b; 
+
+  return 0; 
+}
