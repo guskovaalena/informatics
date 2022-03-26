@@ -1,0 +1,59 @@
+#include <fstream>
+#include <iostream>
+using namespace std;
+
+int main() {
+	ifstream fin;
+	fin.open("27-13b.txt");
+
+	int a[8];
+	int k14 = 0;
+	int k7 = 0;
+	int k2 = 0;
+	int k0 = 0;
+
+	int N, cnt = 0;
+
+	fin >> N;
+
+		for (int i = 0; i < 7; i++) {
+			fin >> a[i];
+		}
+    k0++;
+		if (a[0] % 14 == 0) {
+			k14++;
+		} else if (a[0] % 2 == 0) {
+			k2++;
+		} else if (a[0] % 7 == 0) {
+			k7++;
+		} 
+
+		for (int i = 7; i < N; i++) {
+			fin >> a[7];
+			if (a[7] % 14 == 0)
+				cnt += k0;
+			else if (a[7] % 7 == 0)
+				cnt += k2 + k14;
+			else if (a[7] % 2 == 0)
+				cnt += k7 + k14;
+			else
+				cnt += k14;
+      
+			for (int j = 0; j < 7; j++) {
+				a[j] = a[j + 1];
+			}
+      
+			if (a[0] % 14 == 0) {
+				k14++;
+			} else if (a[0] % 2 == 0) {
+				k2++;
+			} else if (a[0] % 7 == 0) {
+				k7++;
+			}
+			k0++;
+		}
+
+  cout<<cnt;
+
+	return 0;
+}
