@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+
+int BinToDec(int n){
+    int r = 0;
+    for (int i = 1; n; n/=10, i *= 2){
+        r += i*(n%10);
+    }
+    return r;
+}
+
+int DecToBin (int n){
+  int r = 0;
+  int d;
+  while (n > 0){
+    r += (n % 2)*d;
+    d *= 10;
+    n /= 2;
+  }
+  return r;
+}
+
+int main (){
+
+  return 0;
+}
